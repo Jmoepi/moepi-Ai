@@ -22,7 +22,7 @@ async function Projects() {
           const tldrResult = await generateTLDR({ projectDescription: project.readmeContent });
           tldr = tldrResult.tldrSummary;
         } catch (error) {
-          console.error(`Failed to generate TLDR for ${project.name}:`, error);
+          console.error(`Failed to generate TLDR for ${project.name}:`, error instanceof Error ? error.message : error);
           tldr = "Couldn't generate a TL;DR for this project.";
         }
       }
