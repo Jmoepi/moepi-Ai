@@ -14,24 +14,22 @@ async function Projects() {
   // This ensures the portfolio has content to display.
   const repos = await fetchGitHubProjects(GITHUB_USERNAME).catch(() => fetchGitHubProjects('vercel'));
 
-  const projectsWithTldr = await Promise.all(
-    repos.slice(0, 9).map(async (project) => {
-      let tldr = '';
-      if (project.readmeContent) {
-        try {
-          const tldrResult = await generateTLDR({ projectDescription: project.readmeContent });
-          tldr = tldrResult.tldrSummary;
-        } catch (error) {
-          console.error(`Failed to generate TLDR for ${project.name}:`, error instanceof Error ? error.message : error);
-          tldr = "Couldn't generate a TL;DR for this project.";
-        }
+  const projectsWithTldr: Project[] = [];
+  for (const project of repos.slice(0, 9)) {
+    let tldr = '';
+    if (project.readmeContent) {
+      try {
+        const tldrResult = await generateTLDR({ projectDescription: project.readmeContent });
+        tldr = tldrResult.tldrSummary;
+      } catch (error) {
+        console.error(`Failed to generate TLDR for ${project.name}:`, error instanceof Error ? error.message : error);
+        tldr = "Couldn't generate a TL;DR for this project.";
       }
+    }
+    const tags = generateTags(project.readmeContent || '', project.topics);
+    projectsWithTldr.push({ ...project, tldr, tags });
+  }
 
-      const tags = generateTags(project.readmeContent || '', project.topics);
-      
-      return { ...project, tldr, tags } as Project;
-    })
-  );
 
   const portfolioDescription = `This is the portfolio of ${GITHUB_USERNAME}, a creative developer passionate about building modern web applications with AI. This portfolio showcases a variety of projects, from full-stack web apps to AI-powered tools.`;
   const projectDescriptions = projectsWithTldr
