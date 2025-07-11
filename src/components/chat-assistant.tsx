@@ -57,24 +57,24 @@ export default function ChatAssistant({ portfolioDescription, projectDescription
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
-          className="fixed bottom-6 right-6 z-50 h-16 w-16 rounded-full shadow-lg"
+          className="fixed bottom-6 right-6 z-50 h-16 w-16 rounded-full shadow-lg shadow-primary/30"
           aria-label="Open chat assistant"
         >
           <Bot className="h-8 w-8" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col sm:max-w-lg">
+      <SheetContent className="flex w-full flex-col sm:max-w-lg border-primary/50">
         <SheetHeader>
-          <SheetTitle className="font-headline text-2xl">Chat with Achuzi</SheetTitle>
+          <SheetTitle className="font-headline text-2xl text-glow">chat_with_achuzi.sh</SheetTitle>
         </SheetHeader>
         <ScrollArea className="flex-1" ref={scrollAreaRef}>
           <div className="space-y-6 p-4">
             <div className="flex items-start gap-3">
-              <Avatar className="h-8 w-8">
+              <Avatar className="h-8 w-8 border border-accent">
                 <AvatarFallback>AI</AvatarFallback>
-                <Bot className="p-1"/>
+                <Bot className="p-1 text-accent"/>
               </Avatar>
-              <div className="rounded-lg bg-secondary p-3 text-sm">
+              <div className="rounded-none border border-secondary bg-secondary p-3 text-sm">
                 <p>Hey! I'm Achuzi, your Gen Z AI assistant. Ask me anything about this portfolio or the projects here. What's up?</p>
               </div>
             </div>
@@ -84,34 +84,34 @@ export default function ChatAssistant({ portfolioDescription, projectDescription
                 className={cn('flex items-start gap-3', message.role === 'user' ? 'justify-end' : 'justify-start')}
               >
                 {message.role === 'assistant' && (
-                  <Avatar className="h-8 w-8">
+                   <Avatar className="h-8 w-8 border border-accent">
                     <AvatarFallback>AI</AvatarFallback>
-                    <Bot className="p-1"/>
+                    <Bot className="p-1 text-accent"/>
                   </Avatar>
                 )}
                 <div
                   className={cn(
-                    'max-w-[80%] rounded-lg p-3 text-sm',
-                    message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary'
+                    'max-w-[80%] rounded-none border p-3 text-sm',
+                    message.role === 'user' ? 'border-primary bg-primary text-primary-foreground' : 'border-secondary bg-secondary'
                   )}
                 >
                   <p>{message.content}</p>
                 </div>
                 {message.role === 'user' && (
-                  <Avatar className="h-8 w-8">
+                   <Avatar className="h-8 w-8 border border-primary">
                     <AvatarFallback>U</AvatarFallback>
-                    <User className="p-1"/>
+                    <User className="p-1 text-primary"/>
                   </Avatar>
                 )}
               </div>
             ))}
             {isPending && (
               <div className="flex items-start gap-3">
-                 <Avatar className="h-8 w-8">
+                 <Avatar className="h-8 w-8 border border-accent">
                     <AvatarFallback>AI</AvatarFallback>
-                    <Bot className="p-1"/>
+                    <Bot className="p-1 text-accent"/>
                   </Avatar>
-                <div className="rounded-lg bg-secondary p-3 text-sm">
+                <div className="rounded-none border border-secondary bg-secondary p-3 text-sm">
                   <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
                 </div>
               </div>
@@ -123,8 +123,8 @@ export default function ChatAssistant({ portfolioDescription, projectDescription
             <Textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about a project, tech stack, etc."
-              className="flex-1 resize-none"
+              placeholder="user@host:~$ ask about a project..."
+              className="flex-1 resize-none rounded-none"
               rows={1}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
@@ -133,7 +133,7 @@ export default function ChatAssistant({ portfolioDescription, projectDescription
                 }
               }}
             />
-            <Button type="submit" size="icon" disabled={isPending}>
+            <Button type="submit" size="icon" disabled={isPending} className="rounded-none">
               <Send className="h-5 w-5" />
               <span className="sr-only">Send message</span>
             </Button>

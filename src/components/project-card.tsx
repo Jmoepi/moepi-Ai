@@ -22,14 +22,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const animationDelay = `${index * 100}ms`;
 
   return (
-    <Card className="flex h-full transform-gpu flex-col overflow-hidden bg-card/80 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl animate-fade-in-up" style={{ animationDelay }}>
+    <Card className="flex h-full transform-gpu flex-col overflow-hidden border-2 border-primary/20 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:border-primary/80 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in-up" style={{ animationDelay }}>
       <CardHeader>
-        <CardTitle className="font-headline text-2xl">{project.name}</CardTitle>
-        <CardDescription>{project.description}</CardDescription>
+        <CardTitle className="font-headline text-2xl text-glow">{project.name}</CardTitle>
+        <CardDescription>&gt; {project.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
         {project.tldr && (
-          <blockquote className="mb-4 border-l-4 border-primary pl-4 italic text-muted-foreground">
+          <blockquote className="mb-4 border-l-4 border-accent pl-4 text-muted-foreground">
             <p className="font-code text-sm">TL;DR: {project.tldr}</p>
           </blockquote>
         )}

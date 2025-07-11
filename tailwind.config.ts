@@ -17,9 +17,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Space Grotesk"', 'sans-serif'],
-        body: ['"Space Grotesk"', 'sans-serif'],
-        headline: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['"Source Code Pro"', 'monospace'],
+        body: ['"Source Code Pro"', 'monospace'],
+        headline: ['"Source Code Pro"', 'monospace'],
         code: ['"Source Code Pro"', 'monospace'],
       },
       colors: {

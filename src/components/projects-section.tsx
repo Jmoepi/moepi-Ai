@@ -8,12 +8,12 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="w-full bg-secondary/50 py-20 md:py-32">
+    <section id="projects" className="w-full bg-background py-20 md:py-32">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl">My Work</h2>
+          <h2 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl text-glow">./My_Work</h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground md:text-xl">
-            Here are some of the projects I've been working on. Each one is a journey in learning and creating.
+            A directory of projects I've been working on. Each one is a journey in learning and creating.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
