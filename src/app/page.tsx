@@ -20,7 +20,7 @@ async function Projects() {
     if (project.readmeContent) {
       try {
         // Add a delay to avoid hitting API rate limits.
-        await delay(1000);
+        await delay(4000);
         const tldrResult = await generateTLDR({ projectDescription: project.readmeContent });
         tldr = tldrResult.tldrSummary;
       } catch (error) {
