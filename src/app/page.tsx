@@ -4,7 +4,7 @@ import HeroSection from '@/components/hero-section';
 import ProjectsSection from '@/components/projects-section';
 import { fetchGitHubProjects } from '@/lib/github';
 import type { Project } from '@/lib/types';
-import { generateTags } from '@/lib/utils';
+import { generateTags, delay } from '@/lib/utils';
 import { Suspense } from 'react';
 
 const GITHUB_USERNAME = 'Jmoepi';
@@ -19,6 +19,8 @@ async function Projects() {
     let tldr = '';
     if (project.readmeContent) {
       try {
+        // Add a delay to avoid hitting API rate limits.
+        await delay(1000);
         const tldrResult = await generateTLDR({ projectDescription: project.readmeContent });
         tldr = tldrResult.tldrSummary;
       } catch (error) {

@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const KEYWORD_TAG_MAP: Record<string, string> = {
   'react': 'React',
   'next.js': 'Next.js',
