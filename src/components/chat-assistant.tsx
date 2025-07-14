@@ -75,7 +75,7 @@ export default function ChatAssistant({ portfolioDescription, projectDescription
                 <Bot className="p-1 text-accent"/>
               </Avatar>
               <div className="rounded-none border border-secondary bg-secondary p-3 text-sm">
-                <p>Hey! I'm Achuzi, your Gen Z AI assistant. Ask me anything about this portfolio or the projects here. What's up?</p>
+                <p>awe!!, It’s your digital laaitie, Achuzi, Got questions about my portfolio or projects? ask, don’t be shy, neh?</p>
               </div>
             </div>
             {messages.map((message, index) => (
