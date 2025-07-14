@@ -63,7 +63,7 @@ export default function ChatAssistant({ portfolioDescription, projectDescription
           <Bot className="h-8 w-8" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col sm:max-w-lg border-primary/50">
+      <SheetContent className="flex w-full flex-col sm:max-w-lg p-0 border-primary/50">
         <SheetHeader>
           <SheetTitle className="font-headline text-2xl text-glow">chat_with_achuzi.sh</SheetTitle>
         </SheetHeader>
